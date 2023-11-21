@@ -1,4 +1,12 @@
-LPARAMETERS tcLanguage, tnToolBarSize
+LPARAMETERS tcLanguage, tnToolBarSize, tbNewInterface
+
+** DEBUG
+IF PCOUNT() = 0
+	tcLanguage = "EN"
+	tnToolBarSize = 32
+	tbNewInterface = .T.
+ENDIF
+** DEBUG
 
 IF NOT PEMSTATUS(_screen, 'oLang', 5)
 	_screen.AddProperty('oLang', .null.)
@@ -70,7 +78,12 @@ ENDIF
 DO wwDotNetBridge
 InitializeDotnetVersion()
 _screen.oBridge = getwwDotNetBridge()
-LOCAL lcMenuClass
-lcMenuClass = "ToolBarMenuX" + ALLTRIM(STR(tnToolBarSize))
-_screen.oMagicMenu.oBarra = CREATEOBJECT(lcMenuClass)
-_screen.oMagicMenu.oBarra.show()
+IF tbNewInterface
+	SET PROCEDURE TO "ScreenMenu" ADDITIVE
+	CreateSysMenu()
+ELSE
+	LOCAL lcMenuClass
+	lcMenuClass = "ToolBarMenuX" + ALLTRIM(STR(tnToolBarSize))
+	_screen.oMagicMenu.oBarra = CREATEOBJECT(lcMenuClass)
+	_screen.oMagicMenu.oBarra.show()
+ENDIF
