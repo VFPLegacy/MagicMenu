@@ -10,4 +10,4 @@
 {root}\MagicMenuProjectHook.VCX;https://github.com/VFPLegacy/MagicMenu/raw/master/MagicMenuProjectHook.VCX
 {root}\BaseClass.prg;https://raw.githubusercontent.com/VFPLegacy/FoxServer/main/native/BaseClass.prg
 {root}\Main.prg;https://raw.githubusercontent.com/VFPLegacy/FoxServer/main/native/Main.prg
-{root}\macros.prg;https://raw.githubusercontent.com/VFPLegacy/FoxServer/main/native/macros.h
+{root}\macros.h;https://raw.githubusercontent.com/VFPLegacy/FoxServer/main/native/macros.h
