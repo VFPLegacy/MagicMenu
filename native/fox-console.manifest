@@ -1,1 +1,3 @@
 {root}\Dist\SrvWrapper.exe;https://github.com/VFPLegacy/FoxConsole/raw/main/foxconsole.prg
+{root}\MagicMenuProjectHook.VCT;https://github.com/VFPLegacy/MagicMenu/raw/master/MagicMenuProjectHook.VCT
+{root}\MagicMenuProjectHook.VCX;https://github.com/VFPLegacy/MagicMenu/raw/master/MagicMenuProjectHook.VCX
