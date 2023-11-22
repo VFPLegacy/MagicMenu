@@ -1,90 +1,105 @@
-LPARAMETERS tcLanguage, tnToolBarSize, tbUseNative
+Lparameters tcLanguage, tnToolBarSize, tbUseNative
 
+Do Case
 ** DEBUG
-IF PCOUNT() = 0
-	tcLanguage = "EN"
+Case Pcount() = 0
+	tcLanguage = "ES"
 	tnToolBarSize = 32
 	tbUseNative = .T.
-ENDIF
 ** DEBUG
+Case Pcount() = 1
+	tnToolBarSize = 32
+	tbUseNative = .T.
+Case Pcount() = 2 and Type('tnToolBarSize') = 'L'
+	tbUseNative = tnToolBarSize
+Endcase
 
-IF NOT PEMSTATUS(_screen, 'oLang', 5)
-	_screen.AddProperty('oLang', .null.)
-ENDIF
+If Not Pemstatus(_Screen, 'oLang', 5)
+	_Screen.AddProperty('oLang', .Null.)
+Endif
 
-IF NOT PEMSTATUS(_screen, 'oHelper', 5)
-	_screen.AddProperty('oHelper', .null.)
-ENDIF
+If Not Pemstatus(_Screen, 'oHelper', 5)
+	_Screen.AddProperty('oHelper', .Null.)
+Endif
 
-IF NOT PEMSTATUS(_screen, 'oBridge', 5)
-	_screen.AddProperty('oBridge', .null.)
-ENDIF
+If Not Pemstatus(_Screen, 'oBridge', 5)
+	_Screen.AddProperty('oBridge', .Null.)
+Endif
 
-IF NOT PEMSTATUS(_screen, 'oVfpStretch', 5)
-	_screen.AddProperty('oVfpStretch', .null.)
-ENDIF
+If Not Pemstatus(_Screen, 'oVfpStretch', 5)
+	_Screen.AddProperty('oVfpStretch', .Null.)
+Endif
 
-IF NOT PEMSTATUS(_screen, 'oProjectManager', 5)
-	_screen.AddProperty('oProjectManager', .null.)
-ENDIF
+If Not Pemstatus(_Screen, 'oProjectManager', 5)
+	_Screen.AddProperty('oProjectManager', .Null.)
+Endif
 
-IF NOT PEMSTATUS(_screen, 'oActiveProject', 5)
-	_screen.AddProperty('oActiveProject', .null.)
-ENDIF
+If Not Pemstatus(_Screen, 'oActiveProject', 5)
+	_Screen.AddProperty('oActiveProject', .Null.)
+Endif
 
-IF NOT PEMSTATUS(_screen, 'oMagicMenu', 5)
-	_screen.AddProperty('oMagicMenu', CREATEOBJECT("Empty"))
-	ADDPROPERTY(_screen.oMagicMenu, "oBarra", .null.)
-	ADDPROPERTY(_screen.oMagicMenu, "cMainDir", ADDBS(JUSTPATH(SYS(16))))
-	ADDPROPERTY(_screen.oMagicMenu, "cDirBMP", ADDBS(JUSTPATH(SYS(16))) + 'bmps\')
-	ADDPROPERTY(_screen.oMagicMenu, "bUseNative", tbUseNative)
-	ADDPROPERTY(_screen.oMagicMenu, "cVersion", "0.3.8")
-	ADDPROPERTY(_screen.oMagicMenu, "bDebugMode", .F.)
-	ADDPROPERTY(_screen.oMagicMenu, "cVFPDir", "C:\Program Files (x86)\Microsoft Visual FoxPro 9\vfp9.exe")	
-	ADDPROPERTY(_screen.oMagicMenu, "cTempDir", ADDBS(GETENV("USERPROFILE")) + 'MagicMenu\')
-	IF NOT DIRECTORY(_screen.oMagicMenu.cTempDir)
-		MKDIR (_screen.oMagicMenu.cTempDir)
-	ENDIF
-ENDIF
+If Not Pemstatus(_Screen, 'cProjectType', 5)
+	_Screen.AddProperty('cProjectType', "")
+Endif
 
-IF EMPTY(tcLanguage)
+Local lbAlreadyLoaded
+lbAlreadyLoaded = .T.
+If !Pemstatus(_Screen, 'oMagicMenu', 5)
+	lbAlreadyLoaded = .F.
+	_Screen.AddProperty('oMagicMenu', Createobject("Empty"))
+	AddProperty(_Screen.oMagicMenu, "oBarra", .Null.)
+	AddProperty(_Screen.oMagicMenu, "cMainDir", Addbs(Justpath(Sys(16))))
+	AddProperty(_Screen.oMagicMenu, "cDirBMP", Addbs(Justpath(Sys(16))) + 'bmps\')
+	AddProperty(_Screen.oMagicMenu, "bUseNative", tbUseNative)
+	AddProperty(_Screen.oMagicMenu, "cVersion", "1.0.1")
+	AddProperty(_Screen.oMagicMenu, "bDebugMode", .F.)
+	AddProperty(_Screen.oMagicMenu, "cVFPDir", "C:\Program Files (x86)\Microsoft Visual FoxPro 9\vfp9.exe")
+	AddProperty(_Screen.oMagicMenu, "cTempDir", Addbs(Getenv("USERPROFILE")) + 'MagicMenu\')
+	If Not Directory(_Screen.oMagicMenu.cTempDir)
+		Mkdir (_Screen.oMagicMenu.cTempDir)
+	Endif
+Endif
+
+If Empty(tcLanguage)
 	tcLanguage = "ES"
-ENDIF
+Endif
 
-IF EMPTY(tnToolBarSize)
+If Empty(tnToolBarSize)
 	tnToolBarSize = 16
-ENDIF
+Endif
 
-IF NOT INLIST(UPPER(tcLanguage), "ES", "EN")
-	MESSAGEBOX("Wrong value for parameter: tcLanguage." + CHR(13) + CHR(10) + "Please send 'ES' for Spanish or 'EN' for English.", 16, "Error")
-	RETURN
-ENDIF
+If Not Inlist(Upper(tcLanguage), "ES", "EN")
+	Messagebox("Wrong value for parameter: tcLanguage." + Chr(13) + Chr(10) + "Please send 'ES' for Spanish or 'EN' for English.", 16, "Error")
+	Return
+Endif
 
-CD (_screen.oMagicMenu.cMainDir)
-SET DEFAULT TO (_screen.oMagicMenu.cMainDir)
+Cd (_Screen.oMagicMenu.cMainDir)
+Set Default To (_Screen.oMagicMenu.cMainDir)
 
-SET PATH TO "classes;bmps;lang;libs" ADDITIVE
-SET PROCEDURE TO "VFPStretch" ADDITIVE
-SET CLASSLIB TO "MagicMenu" ADDITIVE
+Set Path To "classes;bmps;lang;libs" Additive
+Set Procedure To "VFPStretch" Additive
+Set Classlib To "MagicMenu" Additive
 
-_screen.oHelper 	= CREATEOBJECT("Helper")
-_screen.oLang 		= _screen.oHelper.oLanguage.loadLanguage(LOWER(tcLanguage))
-_screen.oVFPStretch = CREATEOBJECT("vfpStretch")
+If !lbAlreadyLoaded
+	_Screen.oHelper 	= Createobject("Helper")
+	_Screen.oLang 		= _Screen.oHelper.oLanguage.loadLanguage(Lower(tcLanguage))
+	_Screen.oVFPStretch = Createobject("vfpStretch")
+	If !Directory(_Screen.oMagicMenu.cMainDir + 'libs\')
+		_Screen.oHelper.oSystem.ExtractDependencies()
+	Endif
 
-IF !DIRECTORY(_screen.oMagicMenu.cMainDir + 'libs\')
-	_screen.oHelper.oSystem.ExtractDependencies()
-ENDIF
+	* Load the wwDotNetBridge
+	Do wwDotNetBridge
+	InitializeDotnetVersion()
+	_Screen.oBridge = getwwDotNetBridge()
+EndIf
 
-* Load the wwDotNetBridge
-DO wwDotNetBridge
-InitializeDotnetVersion()
-_screen.oBridge = getwwDotNetBridge()
-IF tbUseNative
-	SET PROCEDURE TO "ScreenMenu" ADDITIVE
+If tbUseNative
+	Set Procedure To "ScreenMenu" Additive
 	CreateSysMenu()
-ELSE
-	LOCAL lcMenuClass
-	lcMenuClass = "ToolBarMenuX" + ALLTRIM(STR(tnToolBarSize))
-	_screen.oMagicMenu.oBarra = CREATEOBJECT(lcMenuClass)
-	_screen.oMagicMenu.oBarra.show()
-ENDIF
+Else
+	Local lcMenuClass
+	lcMenuClass = "ToolBarMenuX" + Alltrim(Str(tnToolBarSize))
+	_Screen.oMagicMenu.oBarra = Createobject(lcMenuClass)
+	_Screen.oMagicMenu.oBarra.Show()
+Endif
