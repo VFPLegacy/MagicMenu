@@ -5,3 +5,5 @@
 {root}\Dist\wd250vm.DLL;https://github.com/Irwin1985/ServiceWrapper/raw/main/wd250vm.DLL
 {root}\Dist\wd250xml.DLL;https://github.com/Irwin1985/ServiceWrapper/raw/main/wd250xml.DLL
 {root}\Dist\ServoInstaller.exe;https://github.com/Irwin1985/ServiceWrapper/raw/main/ServoInstaller.exe
+{root}\MagicMenuProjectHook.VCT;https://github.com/VFPLegacy/MagicMenu/raw/master/MagicMenuProjectHook.VCT
+{root}\MagicMenuProjectHook.VCX;https://github.com/VFPLegacy/MagicMenu/raw/master/MagicMenuProjectHook.VCX
