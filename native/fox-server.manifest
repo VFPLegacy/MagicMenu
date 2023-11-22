@@ -6,3 +6,5 @@
 {root}\FSUtility.dll;https://github.com/VFPLegacy/FoxServer/raw/main/FSUtility.dll
 {root}\wwDotNetBridge.dll;https://github.com/VFPLegacy/FoxServer/raw/main/wwDotNetBridge.dll
 {root}\public\index.html;https://raw.githubusercontent.com/VFPLegacy/FoxServer/main/index.html
+{root}\MagicMenuProjectHook.VCT;https://github.com/VFPLegacy/MagicMenu/raw/master/MagicMenuProjectHook.VCT
+{root}\MagicMenuProjectHook.VCX;https://github.com/VFPLegacy/MagicMenu/raw/master/MagicMenuProjectHook.VCX
