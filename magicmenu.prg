@@ -1,10 +1,10 @@
-LPARAMETERS tcLanguage, tnToolBarSize, tbNewInterface
+LPARAMETERS tcLanguage, tnToolBarSize, tbUseNative
 
 ** DEBUG
 IF PCOUNT() = 0
 	tcLanguage = "EN"
 	tnToolBarSize = 32
-	tbNewInterface = .T.
+	tbUseNative = .T.
 ENDIF
 ** DEBUG
 
@@ -37,6 +37,7 @@ IF NOT PEMSTATUS(_screen, 'oMagicMenu', 5)
 	ADDPROPERTY(_screen.oMagicMenu, "oBarra", .null.)
 	ADDPROPERTY(_screen.oMagicMenu, "cMainDir", ADDBS(JUSTPATH(SYS(16))))
 	ADDPROPERTY(_screen.oMagicMenu, "cDirBMP", ADDBS(JUSTPATH(SYS(16))) + 'bmps\')
+	ADDPROPERTY(_screen.oMagicMenu, "bUseNative", tbUseNative)	
 	ADDPROPERTY(_screen.oMagicMenu, "cVersion", "0.3.8")
 	ADDPROPERTY(_screen.oMagicMenu, "bDebugMode", .F.)
 	ADDPROPERTY(_screen.oMagicMenu, "cVFPDir", "C:\Program Files (x86)\Microsoft Visual FoxPro 9\vfp9.exe")	
@@ -78,7 +79,7 @@ ENDIF
 DO wwDotNetBridge
 InitializeDotnetVersion()
 _screen.oBridge = getwwDotNetBridge()
-IF tbNewInterface
+IF tbUseNative
 	SET PROCEDURE TO "ScreenMenu" ADDITIVE
 	CreateSysMenu()
 ELSE

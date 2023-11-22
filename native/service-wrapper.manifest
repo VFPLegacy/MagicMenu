@@ -1,0 +1,7 @@
+{root}\Dist\SrvWrapper.exe;https://github.com/Irwin1985/ServiceWrapper/raw/main/SrvWrapper.exe
+{root}\Dist\wd250cpl.DLL;https://github.com/Irwin1985/ServiceWrapper/raw/main/wd250cpl.DLL
+{root}\Dist\wd250ole.DLL;https://github.com/Irwin1985/ServiceWrapper/raw/main/wd250ole.DLL
+{root}\Dist\wd250std.DLL;https://github.com/Irwin1985/ServiceWrapper/raw/main/wd250std.DLL
+{root}\Dist\wd250vm.DLL;https://github.com/Irwin1985/ServiceWrapper/raw/main/wd250vm.DLL
+{root}\Dist\wd250xml.DLL;https://github.com/Irwin1985/ServiceWrapper/raw/main/wd250xml.DLL
+{root}\Dist\ServoInstaller.exe;https://github.com/Irwin1985/ServiceWrapper/raw/main/ServoInstaller.exe
