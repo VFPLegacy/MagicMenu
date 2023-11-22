@@ -8,3 +8,6 @@
 {root}\public\index.html;https://raw.githubusercontent.com/VFPLegacy/FoxServer/main/index.html
 {root}\MagicMenuProjectHook.VCT;https://github.com/VFPLegacy/MagicMenu/raw/master/MagicMenuProjectHook.VCT
 {root}\MagicMenuProjectHook.VCX;https://github.com/VFPLegacy/MagicMenu/raw/master/MagicMenuProjectHook.VCX
+{root}\BaseClass.prg;https://raw.githubusercontent.com/VFPLegacy/FoxServer/main/native/BaseClass.prg
+{root}\Main.prg;https://raw.githubusercontent.com/VFPLegacy/FoxServer/main/native/Main.prg
+{root}\macros.prg;https://raw.githubusercontent.com/VFPLegacy/FoxServer/main/native/macros.h
