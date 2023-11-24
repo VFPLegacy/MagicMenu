@@ -1,41 +1,23 @@
 # MagicMenu - Empowering Your Visual FoxPro Projects
 
-MagicMenu is a tool designed to enhance and extend the capabilities of Visual FoxPro 9.0. With MagicMenu, you can create projects that were previously challenging to accomplish in VFP, such as Web Projects with ActiveVFP, Windows Services, and Console Applications.
+MagicMenu is a tool designed to enhance and extend the capabilities of Visual FoxPro 9.0. With MagicMenu, you can create projects that were previously challenging to accomplish in VFP, such as Web Projects, Windows Services, and Console Applications.
 
 ## Key Features
 
-- **Create Web Projects with ActiveVFP:** MagicMenu allows you to create websites using the ActiveVFP framework, simplifying the installation and configuration of your web projects.
-- **Windows Services (under development):** Effortlessly create Windows services for background tasks and process automation.
-- **Console Applications (under development):** Develop console applications for executing specific tasks via command-line interactions.
-- **Intuitive Interface:** MagicMenu is a native VFP toolbar featuring buttons to create, compile, and execute your projects.
+- **Create Web Projects with [FoxServer](https://github.com/VFPLegacy/FoxServer):** MagicMenu allows you to create web _(API REST, HTML based)_ applications by using the FoxServer libraries that let you write your backend logic code in VFP.
+- **Windows Services:** Effortlessly create Windows services for background tasks and process automation.
+- **Console Applications:** Develop console applications for executing specific tasks via command-line interactions.
+- **Native Interface:** MagicMenu runs in a native Fox menu and uses the native Project Manager with a Hook class called **MagicMenuProjectHook** that extends it's capabilities.
 
 ## Getting Started with MagicMenu
 
 1. **Download and Installation:**
-   - Download the application [MagicMenu.app](https://github.com/Irwin1985/MagicMenu/raw/master/magicmenu.app).
-   - Copy it to your working directory.
-   - Open the VFP IDE and hit the followind command:
+   - Download [MagicMenu](https://github.com/VFPLegacy/MagicMenu/releases/download/v1.0.1/MagicMenu-v101.app.zip) application.
+   - Copy the .app file into your **Visual FoxPro home directory.**
+   - Open the VFP IDE and hit the following command:
 ```xBase
-CD c:\path\to\my\project\
-DO MagicMenu.app WITH "EN"
+DO MagicMenu WITH "EN"
 ```
-
-2. **Creating a New Project:**
-   - Open MagicMenu and select the "New Project" option from the menu.
-   - Choose the type of project you want to create (Web, Service, or Console).
-   - Provide the necessary information such as project name, location, configurations, etc.
-
-3. **Configuring Web Project with ActiveVFP:**
-   - If you're creating a web project, MagicMenu will guide you through the configuration process, including downloading necessary files and creating folder structures.
-
-4. **Configuring Windows Service or Console Application:**
-   - If you're creating a Windows service or console application, provide the necessary information such as service name or application configurations.
-
-5. **Develop and Customize:**
-   - Once the project is created, MagicMenu will automatically generate the required base code. You can start developing your custom functionalities using the capabilities of Visual FoxPro.
-
-6. **Deploy and Manage:**
-   - After the development phase, MagicMenu will assist you in compiling and deploying your project based on the project type you've created.
 
 ## Contributions and Support
 
