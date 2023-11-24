@@ -39,9 +39,27 @@ MagicMenu will download the runtimes from the [FoxServer](https://github.com/VFP
 ![Native Menu](images/MagicMenu07.jpg)
 ![Native Menu](images/MagicMenu08.jpg)
 
+- Compile the Project as Multi-threaded COM server (dll)
+if you clic another compiling option then you will get this message
+![Native Menu](images/MagicMenu10.jpg)
 
+And if you select a another folder from *'dist/'* then you will get this message
+![Native Menu](images/MagicMenu11.jpg)
 
+You have to select the *'dist'* and dont change the suggested compiled name.
+![Native Menu](images/MagicMenu12.jpg)
 
+![Native Menu](images/MagicMenu13.jpg)
+
+When compilation finishes it will ask you if you want to start the service:
+
+![Native Menu](images/MagicMenu14.jpg)
+
+**USE THE PROJECT MENU IN ORDER TO START/STOP YOUR SERVICE**
+
+- Open your browser and navegate to: *http://localhost:8080/hello*
+
+![Native Menu](images/MagicMenu15.jpg)
 
 ## Contributions and Support
 
