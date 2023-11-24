@@ -29,8 +29,18 @@ DO MagicMenu WITH "EN"
 ![Native Menu](images/MagicMenu02.jpg)
 
 ## Creating a Web Application
-Go to MagicMenu->New->Web Application
+- Go to MagicMenu->New->Web Application
 ![Native Menu](images/MagicMenu02.jpg)
+
+- Fill **Site Name, Physical path of the data and Host Name** and hit the **Create** button.
+![Native Menu](images/MagicMenu06.jpg)
+
+MagicMenu will download the runtimes from the [FoxServer](https://github.com/VFPLegacy/FoxServer/blob/main/setup.manifest) manifest file and create the main project folder and templates. When finish it will open the newly created project.
+![Native Menu](images/MagicMenu07.jpg)
+![Native Menu](images/MagicMenu08.jpg)
+
+
+
 
 
 ## Contributions and Support
