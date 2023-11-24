@@ -18,6 +18,8 @@ MagicMenu is a tool designed to enhance and extend the capabilities of Visual Fo
 ```xBase
 DO MagicMenu WITH "EN"
 ```
+![Native Menu](images/MagicMenu01.jpg)
+
 
 ## Contributions and Support
 
