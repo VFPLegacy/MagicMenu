@@ -18,7 +18,19 @@ MagicMenu is a tool designed to enhance and extend the capabilities of Visual Fo
 ```xBase
 DO MagicMenu WITH "EN"
 ```
+
+### Native menu options
 ![Native Menu](images/MagicMenu01.jpg)
+
+### New submenu options
+![Native Menu](images/MagicMenu02.jpg)
+
+### Project submenu options
+![Native Menu](images/MagicMenu02.jpg)
+
+## Creating a Web Application
+Go to MagicMenu->New->Web Application
+![Native Menu](images/MagicMenu02.jpg)
 
 
 ## Contributions and Support
