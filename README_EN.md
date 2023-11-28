@@ -14,7 +14,7 @@ MagicMenu is a tool designed to enhance and extend the capabilities of Visual Fo
 1. **Download and Installation:**
    - Download [MagicMenu](https://github.com/VFPLegacy/MagicMenu/releases/download/v1.0.1/MagicMenu-v101.app.zip) application.
    - Copy the .app file into your **Visual FoxPro home directory.**
-   - Open the VFP IDE and hit the following command:
+   - Open the VFP IDE (as Administrator) and hit the following command:
 ```xBase
 DO MagicMenu WITH "EN"
 ```
