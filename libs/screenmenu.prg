@@ -65,10 +65,14 @@ Procedure CreateSysMenu
 
 
 	Define Bar 5 Of _Msm_MagicMenu Prompt "\-"
+	
+	Define Bar 6 of _Msm_MagicMenu prompt _Screen.oHelper.oLanguage.Translate("_6RR13H6B6") pictres _MFI_OPEN ;
+		message _Screen.oHelper.oLanguage.Translate("_6RR13H6B6", 2) 
+	On Selection Bar 6 of _Msm_MagicMenu _Screen.oHelper.oSite.OpenExamples()
 
 	* Help Pad
-	Define Bar 6 Of _Msm_MagicMenu Prompt _Screen.oHelper.oLanguage.Translate("_6RI1CS1HU") PICTRES _Mst_hpsch ;
-		MESSAGE _Screen.oHelper.oLanguage.Translate("_6RI1CS1HU", 2)
-	On Selection Bar 6 Of _Msm_MagicMenu _Screen.oHelper.HelpMessage()
+	Define Bar 7 Of _Msm_MagicMenu Prompt _screen.oHelper.oLanguage.Translate("_6RI1CS1HU") PICTRES _Mst_hpsch ;
+		MESSAGE _screen.oHelper.oLanguage.Translate("_6RI1CS1HU", 2)
+	On Selection Bar 7 Of _Msm_MagicMenu _Screen.oHelper.HelpMessage()
 
 Endproc
