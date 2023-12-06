@@ -63,16 +63,21 @@ Procedure CreateSysMenu
 		*KEY CTRL+F8
 	On Selection Bar 4 Of _Mgm_Proyecto _screen.oHelper.oProject.OpenHomeDir()
 
+	** Enviar la plantilla del controlador al portapapeles
+	Define Bar 5 Of _Mgm_Proyecto Prompt _screen.oHelper.oLanguage.Translate("_6RX1FF7GI")	PICTRES _MED_PASTE ;
+		MESSAGE _screen.oHelper.oLanguage.Translate("_6RX1FF7GI",2) SKIP FOR EMPTY(_screen.cProjectType)
+		*KEY CTRL+F8
+	On Selection Bar 5 Of _Mgm_Proyecto _screen.oHelper.oSite.GetControllerTemplate()
 
-	Define Bar 5 Of _Msm_MagicMenu Prompt "\-"
+	Define Bar 6 Of _Msm_MagicMenu Prompt "\-"
 	
-	Define Bar 6 of _Msm_MagicMenu prompt _Screen.oHelper.oLanguage.Translate("_6RR13H6B6") pictres _MFI_OPEN ;
+	Define Bar 7 of _Msm_MagicMenu prompt _Screen.oHelper.oLanguage.Translate("_6RR13H6B6") pictres _MFI_OPEN ;
 		message _Screen.oHelper.oLanguage.Translate("_6RR13H6B6", 2) 
-	On Selection Bar 6 of _Msm_MagicMenu _Screen.oHelper.oSite.OpenExamples()
+	On Selection Bar 7 of _Msm_MagicMenu _Screen.oHelper.oSite.OpenExamples()
 
 	* Help Pad
-	Define Bar 7 Of _Msm_MagicMenu Prompt _screen.oHelper.oLanguage.Translate("_6RI1CS1HU") PICTRES _Mst_hpsch ;
+	Define Bar 8 Of _Msm_MagicMenu Prompt _screen.oHelper.oLanguage.Translate("_6RI1CS1HU") PICTRES _Mst_hpsch ;
 		MESSAGE _screen.oHelper.oLanguage.Translate("_6RI1CS1HU", 2)
-	On Selection Bar 7 Of _Msm_MagicMenu _Screen.oHelper.HelpMessage()
+	On Selection Bar 8 Of _Msm_MagicMenu _Screen.oHelper.HelpMessage()
 
 Endproc
