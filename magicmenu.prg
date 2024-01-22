@@ -51,7 +51,7 @@ If !Pemstatus(_Screen, 'oMagicMenu', 5)
 	AddProperty(_Screen.oMagicMenu, "cMainDir", Addbs(Justpath(Sys(16))))
 	AddProperty(_Screen.oMagicMenu, "cDirBMP", Addbs(Justpath(Sys(16))) + 'bmps\')
 	AddProperty(_Screen.oMagicMenu, "bUseNative", tbUseNative)
-	AddProperty(_Screen.oMagicMenu, "cVersion", "1.2.5")
+	AddProperty(_Screen.oMagicMenu, "cVersion", "1.3.1")
 	AddProperty(_Screen.oMagicMenu, "bDebugMode", .F.)
 	AddProperty(_Screen.oMagicMenu, "cVFPDir", "C:\Program Files (x86)\Microsoft Visual FoxPro 9\vfp9.exe")
 	AddProperty(_Screen.oMagicMenu, "cTempDir", Addbs(Getenv("USERPROFILE")) + 'MagicMenu\')
@@ -68,7 +68,7 @@ If Empty(tnToolBarSize)
 	tnToolBarSize = 16
 Endif
 
-If Not Inlist(Upper(tcLanguage), "ES", "EN")
+If Not Inlist(Upper(tcLanguage), "ES", "EN", "CN")
 	Messagebox("Wrong value for parameter: tcLanguage." + Chr(13) + Chr(10) + "Please send 'ES' for Spanish or 'EN' for English.", 16, "Error")
 	Return
 Endif
