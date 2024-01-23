@@ -51,7 +51,7 @@ If !Pemstatus(_Screen, 'oMagicMenu', 5)
 	AddProperty(_Screen.oMagicMenu, "cMainDir", Addbs(Justpath(Sys(16))))
 	AddProperty(_Screen.oMagicMenu, "cDirBMP", Addbs(Justpath(Sys(16))) + 'bmps\')
 	AddProperty(_Screen.oMagicMenu, "bUseNative", tbUseNative)
-	AddProperty(_Screen.oMagicMenu, "cVersion", "1.3.2")
+	AddProperty(_Screen.oMagicMenu, "cVersion", "1.3.3")
 	AddProperty(_Screen.oMagicMenu, "bDebugMode", .F.)
 	AddProperty(_Screen.oMagicMenu, "cVFPDir", "C:\Program Files (x86)\Microsoft Visual FoxPro 9\vfp9.exe")
 	AddProperty(_Screen.oMagicMenu, "cTempDir", Addbs(Getenv("USERPROFILE")) + 'MagicMenu\')
@@ -83,7 +83,7 @@ If Not Inlist(Upper(tcLanguage), "ES", "EN", "CN")
 		* Case Version(3) = [33]		&& French
 
 		Case Version(3) = [34]		&& Spanish
-			Messagebox("Valor incorrecto para el par¨¢metro: tcLanguage." + Chr(13) + Chr(10) + "Por favor, env¨ªe 'ES' para espa?ol o 'EN' para ingl¨¦s o 'CN' para chino simplificado.", 16, "Error")
+			Messagebox("Valor incorrecto para el parámetro: tcLanguage." + Chr(13) + Chr(10) + "Por favor, envíe 'ES' para español o 'EN' para inglés o 'CN' para chino simplificado.", 16, "Error")
 
 		* Case Version(3) = [42]		&& Czech
 
