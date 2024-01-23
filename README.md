@@ -5,6 +5,9 @@ MagicMenu es una herramienta diseñada para mejorar y extender las capacidades d
 ## English translation
 Please refer to [this file](README_EN.md) for english version.
 
+## 中文翻译
+中文版本请参考[此文件](README_CN.md)。
+
 ## Características Clave
 
 - **Crea Proyectos Web con ActiveVFP:** MagicMenu te permite crear sitios web utilizando el framework ActiveVFP, simplificando la instalación y configuración de tus sitios web.
