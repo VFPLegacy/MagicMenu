@@ -63,7 +63,13 @@ MagicMenu 将根据 [FoxServer](https://github.com/VFPLegacy/FoxServer/blob/main
 
 ## 贡献和支持
 
-如果您想为 MagicMenu 的开发做出贡献，请访问我们的 GitHub 存储库并按照说明提交拉取请求。您还可以通过成为 Patreon 的赞助人来支持我们，以帮助维护和增强此工具。
+如果您想为 MagicMenu 的开发做出贡献，请访问我们的 GitHub 存储库并按照说明提交拉取请求。
+
+中国境内: 
+![Native Menu](images/collection_code.jpg)
+
+中国境外: 
+您还可以通过成为 Patreon 的赞助人来支持我们，以帮助维护和增强此工具。
 
 ## 捐赠和赞助
 
