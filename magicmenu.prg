@@ -51,7 +51,7 @@ If !Pemstatus(_Screen, 'oMagicMenu', 5)
 	AddProperty(_Screen.oMagicMenu, "cMainDir", Addbs(Justpath(Sys(16))))
 	AddProperty(_Screen.oMagicMenu, "cDirBMP", Addbs(Justpath(Sys(16))) + 'bmps\')
 	AddProperty(_Screen.oMagicMenu, "bUseNative", tbUseNative)
-	AddProperty(_Screen.oMagicMenu, "cVersion", "1.3.1")
+	AddProperty(_Screen.oMagicMenu, "cVersion", "1.3.2")
 	AddProperty(_Screen.oMagicMenu, "bDebugMode", .F.)
 	AddProperty(_Screen.oMagicMenu, "cVFPDir", "C:\Program Files (x86)\Microsoft Visual FoxPro 9\vfp9.exe")
 	AddProperty(_Screen.oMagicMenu, "cTempDir", Addbs(Getenv("USERPROFILE")) + 'MagicMenu\')
@@ -69,7 +69,37 @@ If Empty(tnToolBarSize)
 Endif
 
 If Not Inlist(Upper(tcLanguage), "ES", "EN", "CN")
-	Messagebox("Wrong value for parameter: tcLanguage." + Chr(13) + Chr(10) + "Please send 'ES' for Spanish or 'EN' for English.", 16, "Error")
+	*Messagebox("Wrong value for parameter: tcLanguage." + Chr(13) + Chr(10) + "Please send 'ES' for Spanish or 'EN' for English.", 16, "Error")
+
+	* fixed by xinjie  2024.01.23	Use the return value of Version(3) to make the message appear in the native language
+	* https://www.vfphelp.com/help/_5wn12ptn9.htm
+	* Translated from English to other by Bing
+	Do Case 
+		Case Version(3) = [00]		&& English
+			Messagebox("Wrong value for parameter: tcLanguage." + Chr(13) + Chr(10) + "Please send 'ES' for Spanish or 'EN' for English or 'CN' for Chinese Simplified.", 16, "Error")
+
+		* Case Version(3) = [07]		&& Russian
+
+		* Case Version(3) = [33]		&& French
+
+		Case Version(3) = [34]		&& Spanish
+			Messagebox("Valor incorrecto para el parámetro: tcLanguage." + Chr(13) + Chr(10) + "Por favor, envíe 'ES' para espa?ol o 'EN' para inglés o 'CN' para chino simplificado.", 16, "Error")
+
+		* Case Version(3) = [42]		&& Czech
+
+		* Case Version(3) = [49]		&& German
+
+		* Case Version(3) = [82]		&& Korean
+
+		Case Version(3) = [86]		&& Simplified Chinese
+			Messagebox("参数值错误: tcLanguage." + Chr(13) + Chr(10) + "西班牙语请使用 'ES'，英语请使用 'EN'，简体中文请使用 'CN'", 16, "错误")
+			
+		* Case Version(3) = [88]		&& Traditional Chinese
+		
+		Otherwise 
+			Messagebox("Wrong value for parameter: tcLanguage." + Chr(13) + Chr(10) + "Please send 'ES' for Spanish or 'EN' for English or 'CN' for Chinese Simplified.", 16, "Error")
+	EndCase 
+
 	Return
 Endif
 
