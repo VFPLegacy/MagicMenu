@@ -80,7 +80,7 @@ IF !PEMSTATUS(_SCREEN, 'oMagicMenu', 5)
 	ADDPROPERTY(_SCREEN.oMagicMenu, "cMainDir", ADDBS(JUSTPATH(SYS(16))))
 	ADDPROPERTY(_SCREEN.oMagicMenu, "cDirBMP", ADDBS(JUSTPATH(SYS(16))) + 'bmps\')
 	ADDPROPERTY(_SCREEN.oMagicMenu, "bUseNative", tbUseNative)
-	ADDPROPERTY(_SCREEN.oMagicMenu, "cVersion", "1.3.5")
+	ADDPROPERTY(_SCREEN.oMagicMenu, "cVersion", "1.3.6")
 	ADDPROPERTY(_SCREEN.oMagicMenu, "bDebugMode", .F.)
 * AddProperty(_Screen.oMagicMenu, "cVFPDir", "C:\Program Files (x86)\Microsoft Visual FoxPro 9\vfp9.exe")
 * fixed by xinjie  2024.01.25	Use home(1) instead of hardcoding the path
