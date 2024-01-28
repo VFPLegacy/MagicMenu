@@ -13,7 +13,7 @@ MagicMenu 是一个旨在增强和扩展 Visual FoxPro 9.0 的工具。您可以
 
 1. **下载和安装:**
    - 下载 [MagicMenu](https://github.com/VFPLegacy/MagicMenu/releases/download/v1.0.1/MagicMenu-v101.app.zip) 。
-   - 解压后将 .app 文件拷贝至你的 **Visual FoxPro 安装目录** (特别提醒：如果你身处中国，或者像中国一样受严格的网络管制而无法直接访问 github 的国家和地区，请将 domain4cn.txt 文件一起拷贝)。
+   - 解压后将 .app 文件拷贝至你的 **Visual FoxPro 安装目录** (特别提醒：如果你身处中国，或者像中国一样受严格的网络管制而无法直接访问 github 的国家和地区，请将 domain4cn.txt 文件一起拷贝，这样，你可以在文件中镜像地址失效时很容易的进行更换)。
    - 以管理员身份运行 VFP，并在命令窗口执行：
 ```xBase
 DO MagicMenu WITH "CN"
@@ -76,6 +76,27 @@ MagicMenu 将根据 [FoxServer](https://github.com/VFPLegacy/FoxServer/blob/main
 如果您发现 MagicMenu 对您的工作有用并希望支持其开发和维护，请考虑通过 [PayPal](https://www.paypal.com/donate/?hosted_button_id=LXQYXFP77AD2G) 捐款或者通过 [Patreon](https://www.patreon.com/IrwinRodriguez) 成为赞助人。
 
 感谢您选择 MagicMenu 用以提升您在 Visual FoxPro 中的项目！
+
+## 中国境内捐助名单（按时间顺序）
+1.孙明杰
+2.黄志春
+3.陈金虎
+4.王建志
+5.汪洋
+6.明镜
+7.东升
+8.青柠
+9.谢佳缘
+10.韦龙
+11.JaimeCao
+12.吴泉伍
+13.张桂州
+
+**谨代表作者向诸位致以最诚挚的感谢！**
+
+**承诺：所有中国境内通过微信捐助的金额，将会全额转给作者**
+
+(名单及时更新中......)
 
 ## 鸣谢
 [wwDotNetBridge](https://github.com/RickStrahl/wwDotnetBridge)
