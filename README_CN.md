@@ -86,7 +86,7 @@ MagicMenu 将根据 [FoxServer](https://github.com/VFPLegacy/FoxServer/blob/main
 6.明镜
 7.东升
 8.青柠
-9.谢佳缘
+9.谢桂源
 10.韦龙
 11.JaimeCao
 12.吴泉伍
