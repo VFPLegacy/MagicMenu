@@ -13,7 +13,7 @@ MagicMenu 是一个旨在增强和扩展 Visual FoxPro 9.0 的工具。您可以
 
 1. **下载和安装:**
    - 下载 [MagicMenu](https://github.com/VFPLegacy/MagicMenu/releases/download/v1.0.1/MagicMenu-v101.app.zip) 。
-   - 解压后将 .app 文件拷贝至你的 **Visual FoxPro 安装目录** 。
+   - 解压后将 .app 文件拷贝至你的 **Visual FoxPro 安装目录** (特别提醒：如果你身处中国，或者像中国一样受严格的网络管制而无法直接访问 github 的国家和地区，请将 domain4cn.txt 文件一起拷贝)。
    - 以管理员身份运行 VFP，并在命令窗口执行：
 ```xBase
 DO MagicMenu WITH "CN"
