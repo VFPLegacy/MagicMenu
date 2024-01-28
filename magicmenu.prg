@@ -1,169 +1,169 @@
-LPARAMETERS tcLanguage, tnToolBarSize, tbUseNative
+Lparameters tcLanguage, tnToolBarSize, tbUseNative
 
-DO CASE
+Do Case
 ** DEBUG
-CASE PCOUNT() = 0
-* tcLanguage	= "ES"
-* fixed by xinjie  2024.01.25		Use the return value of Version(3) to Confirm the default language
-* This is where there is a place reserved for localization in other languages
-* https://www.vfphelp.com/help/_5wn12ptn9.htm
-	DO CASE
-	CASE VERSION(3) = [00]		&& English
-		tcLanguage	= "EN"
+Case Pcount() = 0
+	* tcLanguage	= "ES"
+	* fixed by xinjie  2024.01.25		Use the return value of Version(3) to Confirm the default language
+	* This is where there is a place reserved for localization in other languages
+	* https://www.vfphelp.com/help/_5wn12ptn9.htm
+	Do Case
+		Case Version(3) = [00]		&& English
+			tcLanguage	= "EN"
 
-* Case Version(3) = [07]		&& Russian
+		* Case Version(3) = [07]		&& Russian
 
-* Case Version(3) = [33]		&& French
+		* Case Version(3) = [33]		&& French
 
-	CASE VERSION(3) = [34]		&& Spanish
-		tcLanguage = "ES"
-* Case Version(3) = [42]		&& Czech
+		Case Version(3) = [34]		&& Spanish
+			tcLanguage = "ES"
+		* Case Version(3) = [42]		&& Czech
 
-* Case Version(3) = [49]		&& German
+		* Case Version(3) = [49]		&& German
 
-* Case Version(3) = [82]		&& Korean
+		* Case Version(3) = [82]		&& Korean
 
-	CASE VERSION(3) = [86]		&& Simplified Chinese
-		tcLanguage = "CN"
-
-* Case Version(3) = [88]		&& Traditional Chinese
-
-	OTHERWISE
-* Add comments by xinjie  2024.01.25		We need to respect the author, at least.
-		tcLanguage	= "ES"
-	ENDCASE
-
+		Case Version(3) = [86]		&& Simplified Chinese
+			tcLanguage = "CN"
+			
+		* Case Version(3) = [88]		&& Traditional Chinese
+		
+		Otherwise 
+			* Add comments by xinjie  2024.01.25		We need to respect the author, at least.
+			tcLanguage	= "ES"
+	EndCase 
+	
 	tnToolBarSize = 32
 	tbUseNative = .T.
 ** DEBUG
-CASE PCOUNT() = 1
+Case Pcount() = 1
 	tnToolBarSize = 32
 	tbUseNative = .T.
-CASE PCOUNT() = 2 AND TYPE('tnToolBarSize') = 'L'
+Case Pcount() = 2 and Type('tnToolBarSize') = 'L'
 	tbUseNative = tnToolBarSize
-ENDCASE
+Endcase
 
-IF NOT PEMSTATUS(_SCREEN, 'oLang', 5)
-	_SCREEN.ADDPROPERTY('oLang', .NULL.)
-ENDIF
+If Not Pemstatus(_Screen, 'oLang', 5)
+	_Screen.AddProperty('oLang', .Null.)
+Endif
 
-IF NOT PEMSTATUS(_SCREEN, 'oHelper', 5)
-	_SCREEN.ADDPROPERTY('oHelper', .NULL.)
-ENDIF
+If Not Pemstatus(_Screen, 'oHelper', 5)
+	_Screen.AddProperty('oHelper', .Null.)
+Endif
 
-IF NOT PEMSTATUS(_SCREEN, 'oBridge', 5)
-	_SCREEN.ADDPROPERTY('oBridge', .NULL.)
-ENDIF
+If Not Pemstatus(_Screen, 'oBridge', 5)
+	_Screen.AddProperty('oBridge', .Null.)
+Endif
 
-IF NOT PEMSTATUS(_SCREEN, 'oVfpStretch', 5)
-	_SCREEN.ADDPROPERTY('oVfpStretch', .NULL.)
-ENDIF
+If Not Pemstatus(_Screen, 'oVfpStretch', 5)
+	_Screen.AddProperty('oVfpStretch', .Null.)
+Endif
 
-IF NOT PEMSTATUS(_SCREEN, 'oProjectManager', 5)
-	_SCREEN.ADDPROPERTY('oProjectManager', .NULL.)
-ENDIF
+If Not Pemstatus(_Screen, 'oProjectManager', 5)
+	_Screen.AddProperty('oProjectManager', .Null.)
+Endif
 
-IF NOT PEMSTATUS(_SCREEN, 'oActiveProject', 5)
-	_SCREEN.ADDPROPERTY('oActiveProject', .NULL.)
-ENDIF
+If Not Pemstatus(_Screen, 'oActiveProject', 5)
+	_Screen.AddProperty('oActiveProject', .Null.)
+Endif
 
-IF NOT PEMSTATUS(_SCREEN, 'cProjectType', 5)
-	_SCREEN.ADDPROPERTY('cProjectType', "")
-ENDIF
+If Not Pemstatus(_Screen, 'cProjectType', 5)
+	_Screen.AddProperty('cProjectType', "")
+Endif
 
-LOCAL lbAlreadyLoaded
+Local lbAlreadyLoaded
 lbAlreadyLoaded = .T.
-IF !PEMSTATUS(_SCREEN, 'oMagicMenu', 5)
+If !Pemstatus(_Screen, 'oMagicMenu', 5)
 	lbAlreadyLoaded = .F.
-	_SCREEN.ADDPROPERTY('oMagicMenu', CREATEOBJECT("Empty"))
-	ADDPROPERTY(_SCREEN.oMagicMenu, "oBarra", .NULL.)
-	ADDPROPERTY(_SCREEN.oMagicMenu, "cMainDir", ADDBS(JUSTPATH(SYS(16))))
-	ADDPROPERTY(_SCREEN.oMagicMenu, "cDirBMP", ADDBS(JUSTPATH(SYS(16))) + 'bmps\')
-	ADDPROPERTY(_SCREEN.oMagicMenu, "bUseNative", tbUseNative)
-	ADDPROPERTY(_SCREEN.oMagicMenu, "cVersion", "1.3.6")
-	ADDPROPERTY(_SCREEN.oMagicMenu, "bDebugMode", .F.)
-* AddProperty(_Screen.oMagicMenu, "cVFPDir", "C:\Program Files (x86)\Microsoft Visual FoxPro 9\vfp9.exe")
-* fixed by xinjie  2024.01.25	Use home(1) instead of hardcoding the path
-	ADDPROPERTY(_SCREEN.oMagicMenu, "cVFPDir", HOME(1) + "vfp9.exe")
-	ADDPROPERTY(_SCREEN.oMagicMenu, "cTempDir", ADDBS(GETENV("USERPROFILE")) + 'MagicMenu\')
-	IF NOT DIRECTORY(_SCREEN.oMagicMenu.cTempDir)
-		MKDIR (_SCREEN.oMagicMenu.cTempDir)
-	ENDIF
-ENDIF
+	_Screen.AddProperty('oMagicMenu', Createobject("Empty"))
+	AddProperty(_Screen.oMagicMenu, "oBarra", .Null.)
+	AddProperty(_Screen.oMagicMenu, "cMainDir", Addbs(Justpath(Sys(16))))
+	AddProperty(_Screen.oMagicMenu, "cDirBMP", Addbs(Justpath(Sys(16))) + 'bmps\')
+	AddProperty(_Screen.oMagicMenu, "bUseNative", tbUseNative)
+	AddProperty(_Screen.oMagicMenu, "cVersion", "1.3.7")
+	AddProperty(_Screen.oMagicMenu, "bDebugMode", .F.)
+	* AddProperty(_Screen.oMagicMenu, "cVFPDir", "C:\Program Files (x86)\Microsoft Visual FoxPro 9\vfp9.exe")
+	* fixed by xinjie  2024.01.25	Use home(1) instead of hardcoding the path
+	AddProperty(_Screen.oMagicMenu, "cVFPDir", Home(1) + "vfp9.exe")
+	AddProperty(_Screen.oMagicMenu, "cTempDir", Addbs(Getenv("USERPROFILE")) + 'MagicMenu\')
+	If Not Directory(_Screen.oMagicMenu.cTempDir)
+		Mkdir (_Screen.oMagicMenu.cTempDir)
+	Endif
+Endif
 
-IF EMPTY(tcLanguage)
+If Empty(tcLanguage)
 	tcLanguage = "ES"
-ENDIF
+Endif
 
-IF EMPTY(tnToolBarSize)
+If Empty(tnToolBarSize)
 	tnToolBarSize = 16
-ENDIF
+Endif
 
-IF NOT INLIST(UPPER(tcLanguage), "ES", "EN", "CN")
-* Messagebox("Wrong value for parameter: tcLanguage." + Chr(13) + Chr(10) + "Please send 'ES' for Spanish or 'EN' for English.", 16, "Error")
+If Not Inlist(Upper(tcLanguage), "ES", "EN", "CN")
+	* Messagebox("Wrong value for parameter: tcLanguage." + Chr(13) + Chr(10) + "Please send 'ES' for Spanish or 'EN' for English.", 16, "Error")
 
-* fixed by xinjie  2024.01.23	Use the return value of Version(3) to make the message appear in the native language
-* This is where there is a place reserved for localization in other languages
-* https://www.vfphelp.com/help/_5wn12ptn9.htm
-* Translated from English to other by Bing
-	DO CASE
-	CASE VERSION(3) = [00]		&& English
-		MESSAGEBOX("Wrong value for parameter: tcLanguage." + CHR(13) + CHR(10) + "Please send 'ES' for Spanish or 'EN' for English or 'CN' for Chinese Simplified.", 16, "Error")
+	* fixed by xinjie  2024.01.23	Use the return value of Version(3) to make the message appear in the native language
+	* This is where there is a place reserved for localization in other languages
+	* https://www.vfphelp.com/help/_5wn12ptn9.htm
+	* Translated from English to other by Bing
+	Do Case 
+		Case Version(3) = [00]		&& English
+			Messagebox("Wrong value for parameter: tcLanguage." + Chr(13) + Chr(10) + "Please send 'ES' for Spanish or 'EN' for English or 'CN' for Chinese Simplified.", 16, "Error")
 
-* Case Version(3) = [07]		&& Russian
+		* Case Version(3) = [07]		&& Russian
 
-* Case Version(3) = [33]		&& French
+		* Case Version(3) = [33]		&& French
 
-	CASE VERSION(3) = [34]		&& Spanish
-		MESSAGEBOX("Valor incorrecto para el par·metro: tcLanguage." + CHR(13) + CHR(10) + "Por favor, envÌe 'ES' para espaÒol o 'EN' para inglÈs o 'CN' para chino simplificado.", 16, "Error")
+		Case Version(3) = [34]		&& Spanish
+			Messagebox("Valor incorrecto para el parÈÜ°etro: tcLanguage." + Chr(13) + Chr(10) + "Por favor, envÈüä 'ES' para espaÈßâl o 'EN' para inglÈñü o 'CN' para chino simplificado.", 16, "Error")
 
-* Case Version(3) = [42]		&& Czech
+		* Case Version(3) = [42]		&& Czech
 
-* Case Version(3) = [49]		&& German
+		* Case Version(3) = [49]		&& German
 
-* Case Version(3) = [82]		&& Korean
+		* Case Version(3) = [82]		&& Korean
 
-	CASE VERSION(3) = [86]		&& Simplified Chinese
-		MESSAGEBOX("≤Œ ˝÷µ¥ÌŒÛ: tcLanguage." + CHR(13) + CHR(10) + "Œ˜∞‡—¿”Ô«Î π”√ 'ES'£¨”¢”Ô«Î π”√ 'EN'£¨ºÚÃÂ÷–Œƒ«Î π”√ 'CN'", 16, "¥ÌŒÛ")
+		Case Version(3) = [86]		&& Simplified Chinese
+			Messagebox("ÂèÇÊï∞ÂÄºÈîôËØØ: tcLanguage." + Chr(13) + Chr(10) + "Ë•øÁè≠ÁâôËØ≠ËØ∑‰ΩøÁî® 'ES'ÔºåËã±ËØ≠ËØ∑‰ΩøÁî® 'EN'ÔºåÁÆÄ‰Ωì‰∏≠ÊñáËØ∑‰ΩøÁî® 'CN'", 16, "ÈîôËØØ")
+			
+		* Case Version(3) = [88]		&& Traditional Chinese
+		
+		Otherwise 
+			* Add comments by xinjie  2024.01.25		After all, English is the most spoken language in the world.
+			Messagebox("Wrong value for parameter: tcLanguage." + Chr(13) + Chr(10) + "Please send 'ES' for Spanish or 'EN' for English or 'CN' for Chinese Simplified.", 16, "Error")
+	EndCase 
 
-* Case Version(3) = [88]		&& Traditional Chinese
+	Return
+Endif
 
-	OTHERWISE
-* Add comments by xinjie  2024.01.25		After all, English is the most spoken language in the world.
-		MESSAGEBOX("Wrong value for parameter: tcLanguage." + CHR(13) + CHR(10) + "Please send 'ES' for Spanish or 'EN' for English or 'CN' for Chinese Simplified.", 16, "Error")
-	ENDCASE
+Cd (_Screen.oMagicMenu.cMainDir)
+Set Default To (_Screen.oMagicMenu.cMainDir)
 
-	RETURN
-ENDIF
+Set Path To "classes;bmps;lang;libs" Additive
+Set Procedure To "VFPStretch" Additive
+Set Classlib To "MagicMenu" Additive
 
-CD (_SCREEN.oMagicMenu.cMainDir)
-SET DEFAULT TO (_SCREEN.oMagicMenu.cMainDir)
+If !lbAlreadyLoaded
+	_Screen.oHelper 	= Createobject("Helper")
+	_Screen.oLang 		= _Screen.oHelper.oLanguage.loadLanguage(Lower(tcLanguage))
+	_Screen.oVFPStretch = Createobject("vfpStretch")
 
-SET PATH TO "classes;bmps;lang;libs" ADDITIVE
-SET PROCEDURE TO "VFPStretch" ADDITIVE
-SET CLASSLIB TO "MagicMenu" ADDITIVE
+	If !Directory(_Screen.oMagicMenu.cMainDir + 'libs\')
+		_Screen.oHelper.oSystem.ExtractDependencies()
+	Endif
 
-IF !lbAlreadyLoaded
-	_SCREEN.oHelper 	= CREATEOBJECT("Helper")
-	_SCREEN.oLang 		= _SCREEN.oHelper.oLanguage.loadLanguage(LOWER(tcLanguage))
-	_SCREEN.oVFPStretch = CREATEOBJECT("vfpStretch")
-
-	IF !DIRECTORY(_SCREEN.oMagicMenu.cMainDir + 'libs\')
-		_SCREEN.oHelper.oSystem.ExtractDependencies()
-	ENDIF
-
-* Load the wwDotNetBridge
-	DO wwDotNetBridge
+	* Load the wwDotNetBridge
+	Do wwDotNetBridge
 	InitializeDotnetVersion()
-	_SCREEN.oBridge = getwwDotNetBridge()
-ENDIF
+	_Screen.oBridge = getwwDotNetBridge()
+EndIf
 
-IF tbUseNative
-	SET PROCEDURE TO "ScreenMenu" ADDITIVE
+If tbUseNative
+	Set Procedure To "ScreenMenu" Additive
 	CreateSysMenu()
-ELSE
-	LOCAL lcMenuClass
-	lcMenuClass = "ToolBarMenuX" + ALLTRIM(STR(tnToolBarSize))
-	_SCREEN.oMagicMenu.oBarra = CREATEOBJECT(lcMenuClass)
-	_SCREEN.oMagicMenu.oBarra.SHOW()
-ENDIF
+Else
+	Local lcMenuClass
+	lcMenuClass = "ToolBarMenuX" + Alltrim(Str(tnToolBarSize))
+	_Screen.oMagicMenu.oBarra = Createobject(lcMenuClass)
+	_Screen.oMagicMenu.oBarra.Show()
+Endif
