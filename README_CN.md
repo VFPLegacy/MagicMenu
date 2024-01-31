@@ -92,6 +92,7 @@ MagicMenu 将根据 [FoxServer](https://github.com/VFPLegacy/FoxServer/blob/main
 12.吴泉伍
 13.张桂州
 14.斌少
+15.杨shiqiang
 
 **谨代表作者向诸位致以最诚挚的感谢！**
 
